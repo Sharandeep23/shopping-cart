@@ -21,17 +21,38 @@ document.getElementById("minusBtn").addEventListener("click", () => {
     updateTotal();
 });
 
+// Delete Button Event Handler (Phone)
+document.getElementById("deleteBtn").addEventListener("click", () => {
+    // Hiding the first row
+    document.getElementsByClassName("cart-item")[0].style.display = "none";
+
+    // Resting the Update Total Section
+    document.getElementById("priceOfPhone").innerText = 0;
+    updateTotal();
+});
+
 // Plus Button2 Event Handler (Case)
-document.getElementById("minusBtn2").addEventListener("click", () => {
-    decrementNumber("numOfCase");
+document.getElementById("plusBtn2").addEventListener("click", () => {
+    incrementNumber("numOfCase");
     updatePrice("numOfCase", "priceOfCase", initialCasePrice);
 
     // Update price for subtotal, vat and total
     updateTotal();
 });
 
-document.getElementById("plusBtn2").addEventListener("click", () => {
-    incrementNumber("numOfCase");
+// Delete Button Event Handler (Phone)
+document.getElementById("deleteBtn2").addEventListener("click", () => {
+    // Hiding the first row
+    document.getElementsByClassName("cart-item")[1].style.display = "none";
+
+    // Resting the Update Total Section
+    document.getElementById("priceOfCase").innerText = 0;
+    updateTotal();
+});
+
+// Minus Button2 Event Handler (Case)
+document.getElementById("minusBtn2").addEventListener("click", () => {
+    decrementNumber("numOfCase");
     updatePrice("numOfCase", "priceOfCase", initialCasePrice);
 
     // Update price for subtotal, vat and total
