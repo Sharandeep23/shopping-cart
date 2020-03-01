@@ -1,15 +1,15 @@
 // Setting Up Initial Prices
 const initialPhonePrice = parseInt(document.getElementById("priceOfPhone").innerText);
 const initialCasePrice = parseInt(document.getElementById("priceOfCase").innerText);
+const taxRate = 0.15;
 
 // Plus Button Event Handler (Phone)
 document.getElementById("plusBtn").addEventListener("click", () => {
     incrementNumber("numOfPhone");
     updatePrice("numOfPhone", "priceOfPhone", initialPhonePrice);
 
-    // Update price for subtotal and total
-    updatePrice2("subtotal", "priceOfPhone", "priceOfCase");
-    updatePrice2("total", "priceOfPhone", "priceOfCase");
+    // Update price for subtotal, vat and total
+    updateTotal();
 });
 
 // Minus Button Event Handler (Phone)
@@ -17,9 +17,8 @@ document.getElementById("minusBtn").addEventListener("click", () => {
     decrementNumber("numOfPhone");
     updatePrice("numOfPhone", "priceOfPhone", initialPhonePrice);
 
-    // Update price for subtotal and total
-    updatePrice2("subtotal", "priceOfPhone", "priceOfCase");
-    updatePrice2("total", "priceOfPhone", "priceOfCase");
+    // Update price for subtotal, vat and total
+    updateTotal();
 });
 
 // Plus Button2 Event Handler (Case)
@@ -27,18 +26,16 @@ document.getElementById("minusBtn2").addEventListener("click", () => {
     decrementNumber("numOfCase");
     updatePrice("numOfCase", "priceOfCase", initialCasePrice);
 
-    // Update price for subtotal and total
-    updatePrice2("subtotal", "priceOfPhone", "priceOfCase");
-    updatePrice2("total", "priceOfPhone", "priceOfCase");
+    // Update price for subtotal, vat and total
+    updateTotal();
 });
 
 document.getElementById("plusBtn2").addEventListener("click", () => {
     incrementNumber("numOfCase");
     updatePrice("numOfCase", "priceOfCase", initialCasePrice);
 
-    // Update price for subtotal and total
-    updatePrice2("subtotal", "priceOfPhone", "priceOfCase");
-    updatePrice2("total", "priceOfPhone", "priceOfCase");
+    // Update price for subtotal, vat and total
+    updateTotal();
 });
 
 // Utility Functions
@@ -62,9 +59,14 @@ function updatePrice(quantityId, priceId, initialPrice) {
     document.getElementById(priceId).innerText = getNumber(quantityId) * initialPrice;
 }
 
-function updatePrice2(totalId, phoneId, caseId) {
-    let priceOfPhone = parseInt(document.getElementById(phoneId).innerText);
-    let priceOfCase = parseInt(document.getElementById(caseId).innerText);
+// As the function does exactly same thing for every element we made it static
+function updateTotal() {
+    let priceOfPhone = parseInt(document.getElementById("priceOfPhone").innerText);
+    let priceOfCase = parseInt(document.getElementById("priceOfCase").innerText);
+    // Removing the decimal point
+    let tax = Math.floor((priceOfPhone + priceOfCase) * taxRate);
 
-    document.getElementById(totalId).innerText = priceOfPhone + priceOfCase;
+    document.getElementById("subtotal").innerText = priceOfPhone + priceOfCase;
+    document.getElementById("tax").innerText = tax;
+    document.getElementById("total").innerText = priceOfPhone + priceOfCase + tax;
 }
