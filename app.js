@@ -59,6 +59,15 @@ document.getElementById("minusBtn2").addEventListener("click", () => {
     updateTotal();
 });
 
+// Checkout Button Event Handler
+document.getElementById("checkout").addEventListener("click", () => {
+    // If total value is larger than 0
+    if (parseInt(document.getElementById("total").innerText) > 0) {
+        document.getElementsByTagName("section")[0].style.display = "none";
+        document.getElementById("after-checkout").style.display = "block";
+    }
+});
+
 // Utility Functions
 
 function getNumber(id) {
