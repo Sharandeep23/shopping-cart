@@ -28,6 +28,7 @@ body {
 }
 .cart-item .remove-item {
     width: 25px !important;
+    cursor: pointer;
 }
 .btn-default {
     background-color: #fff;
@@ -53,6 +54,7 @@ body {
     background-color: #2fbe70;
     border: none;
 }
+/* Added by Me */
 
 #after-checkout {
     display: none;
