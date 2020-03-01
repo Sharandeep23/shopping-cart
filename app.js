@@ -40,7 +40,7 @@ document.getElementById("plusBtn2").addEventListener("click", () => {
   updateTotal();
 });
 
-// Delete Button Event Handler (Case)
+// Delete Button2 Event Handler (Case)
 document.getElementById("deleteBtn2").addEventListener("click", () => {
   // Hiding the first row
   document.getElementsByClassName("cart-item")[1].style.display = "none";
